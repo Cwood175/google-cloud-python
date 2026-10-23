@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,10 +14,10 @@
 #
 from __future__ import annotations
 
-from typing import MutableMapping, MutableSequence
+from collections.abc import MutableSequence
 
-from google.protobuf import timestamp_pb2  # type: ignore
 import proto  # type: ignore
+from google.protobuf import timestamp_pb2  # type: ignore
 
 __protobuf__ = proto.module(
     package="google.ai.generativelanguage.v1beta",
@@ -88,7 +87,7 @@ class Document(proto.Message):
     Attributes:
         name (str):
             Immutable. Identifier. The ``Document`` resource name. The
-            ID (name excluding the "corpora/*/documents/" prefix) can
+            ID (name excluding the ``corpora/*/documents/`` prefix) can
             contain up to 40 characters that are lowercase alphanumeric
             or dashes (-). The ID cannot start or end with a dash. If
             the name is empty on create, a unique name will be derived
@@ -120,7 +119,7 @@ class Document(proto.Message):
         proto.STRING,
         number=2,
     )
-    custom_metadata: MutableSequence["CustomMetadata"] = proto.RepeatedField(
+    custom_metadata: MutableSequence[CustomMetadata] = proto.RepeatedField(
         proto.MESSAGE,
         number=3,
         message="CustomMetadata",
@@ -185,7 +184,7 @@ class CustomMetadata(proto.Message):
         number=2,
         oneof="value",
     )
-    string_list_value: "StringList" = proto.Field(
+    string_list_value: StringList = proto.Field(
         proto.MESSAGE,
         number=6,
         oneof="value",
@@ -223,7 +222,7 @@ class MetadataFilter(proto.Message):
         proto.STRING,
         number=1,
     )
-    conditions: MutableSequence["Condition"] = proto.RepeatedField(
+    conditions: MutableSequence[Condition] = proto.RepeatedField(
         proto.MESSAGE,
         number=2,
         message="Condition",
@@ -280,6 +279,7 @@ class Condition(proto.Message):
                 Supported by string only when ``CustomMetadata`` value type
                 for the given key has a ``string_list_value``.
         """
+
         OPERATOR_UNSPECIFIED = 0
         LESS = 1
         LESS_EQUAL = 2
@@ -352,6 +352,7 @@ class Chunk(proto.Message):
             STATE_FAILED (10):
                 ``Chunk`` failed processing.
         """
+
         STATE_UNSPECIFIED = 0
         STATE_PENDING_PROCESSING = 1
         STATE_ACTIVE = 2
@@ -361,12 +362,12 @@ class Chunk(proto.Message):
         proto.STRING,
         number=1,
     )
-    data: "ChunkData" = proto.Field(
+    data: ChunkData = proto.Field(
         proto.MESSAGE,
         number=2,
         message="ChunkData",
     )
-    custom_metadata: MutableSequence["CustomMetadata"] = proto.RepeatedField(
+    custom_metadata: MutableSequence[CustomMetadata] = proto.RepeatedField(
         proto.MESSAGE,
         number=3,
         message="CustomMetadata",
