@@ -36,8 +36,9 @@ __protobuf__ = proto.module(
 
 
 class Corpus(proto.Message):
-    r"""A ``Corpus`` is a collection of ``Document``\ s. A project can
-    create up to 5 corpora.
+    r"""A ``Corpus`` is a collection of ``Document``\ s.
+
+    A project can create up to 5 corpora.
 
     Attributes:
         name (str):
@@ -82,8 +83,9 @@ class Corpus(proto.Message):
 
 
 class Document(proto.Message):
-    r"""A ``Document`` is a collection of ``Chunk``\ s. A ``Corpus`` can
-    have a maximum of 10,000 ``Document``\ s.
+    r"""A ``Document`` is a collection of ``Chunk``\ s.
+
+    A ``Corpus`` can have a maximum of 10,000 ``Document``\ s.
 
     Attributes:
         name (str):
@@ -138,8 +140,7 @@ class Document(proto.Message):
 
 
 class StringList(proto.Message):
-    r"""User provided string values assigned to a single metadata
-    key.
+    r"""User provided string values assigned to a single metadata key.
 
     Attributes:
         values (MutableSequence[str]):
@@ -255,8 +256,7 @@ class Condition(proto.Message):
     """
 
     class Operator(proto.Enum):
-        r"""Defines the valid operators that can be applied to a
-        key-value pair.
+        r"""Defines the valid operators that can be applied to a key-value pair.
 
         Values:
             OPERATOR_UNSPECIFIED (0):
@@ -280,6 +280,7 @@ class Condition(proto.Message):
                 Supported by string only when ``CustomMetadata`` value type
                 for the given key has a ``string_list_value``.
         """
+
         OPERATOR_UNSPECIFIED = 0
         LESS = 1
         LESS_EQUAL = 2
@@ -309,8 +310,8 @@ class Condition(proto.Message):
 
 class Chunk(proto.Message):
     r"""A ``Chunk`` is a subpart of a ``Document`` that is treated as an
-    independent unit for the purposes of vector representation and
-    storage. A ``Corpus`` can have a maximum of 1 million ``Chunk``\ s.
+    independent unit for the purposes of vector representation and storage. A
+    ``Corpus`` can have a maximum of 1 million ``Chunk``\ s.
 
     Attributes:
         name (str):
@@ -352,6 +353,7 @@ class Chunk(proto.Message):
             STATE_FAILED (10):
                 ``Chunk`` failed processing.
         """
+
         STATE_UNSPECIFIED = 0
         STATE_PENDING_PROCESSING = 1
         STATE_ACTIVE = 2
